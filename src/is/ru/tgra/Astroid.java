@@ -1,9 +1,7 @@
 package is.ru.tgra;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.loaders.TextureLoader;
 import com.badlogic.gdx.graphics.GL11;
-import com.badlogic.gdx.graphics.Texture;
 
 import java.util.Random;
 
@@ -18,14 +16,18 @@ public class Astroid extends VisualItem {
 		// TODO Auto-generated constructor stub
 	}
 
+	//draw function for an astroid
 	public void draw() {
 		Gdx.gl11.glPushMatrix();
 		// Gdx.gl11.glScalef(30, 30, 40);
 		Gdx.gl11.glTranslatef(x, y, 0);
+		Gdx.gl11.glColor4f(1f,1f,1f, 1f);
 		Gdx.gl11.glDrawArrays(GL11.GL_TRIANGLE_STRIP, 0, 4);
 		Gdx.gl11.glPopMatrix();
 	}
-
+	
+	
+	//give randomspeed and direction to given Astroid;
 	public void giverandomspeedEasy() {
 		int four = r.nextInt(4);
 		float randomspeedX = r.nextInt(40);
@@ -48,12 +50,6 @@ public class Astroid extends VisualItem {
 		} else {
 			setSpeedx(-randomspeedX);
 			setSpeedy(-randomspeedY);
-		}
-	}
-	public void collidedWith(VisualItem X){
-		if(X instanceof spaceShip){			
-			System.out.println("Player DEAD");
-			Astroids.deadPlayer();
 		}
 	}
 
